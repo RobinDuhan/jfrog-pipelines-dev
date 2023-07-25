@@ -1,8 +1,19 @@
+resources:
+  - name: resource_1
+    type: GitRepo
+    configuration:
+      gitProvider: github_private
+      path: {{.jfrog-pipelines.sourceRepository}}
+      branches:
+        include: main
 pipelines:
   - name: hello_world
     steps:
       - name: step_1
         type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
         execution:
           onExecute:
             - echo "Hello world"
