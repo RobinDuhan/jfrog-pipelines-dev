@@ -1,5 +1,5 @@
 pipelines:
-  - name: hello-world
+  - name: hello_world
     steps:
       - name: step_1
         type: Bash
