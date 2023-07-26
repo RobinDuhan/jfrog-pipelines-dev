@@ -14,7 +14,7 @@ pipelines:
         type: image
         image:
           custom:
-            registry: docker
+            registry: docker_hub
             sourceRepository: busybox
             name: busybox
             tag: latest
