@@ -9,7 +9,7 @@ resources:
 pipelines:
   - name: hello_world
     configuration:
-      nodePool: testing_node_pools
+      nodePool: default-dynamic-nodepool
       runtime:
         type: image
         image:
