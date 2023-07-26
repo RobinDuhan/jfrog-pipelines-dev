@@ -20,6 +20,6 @@ pipelines:
             - pwd
             - whoami
             - ps aux
-            - cat /var/opt/jfrog/pipelines/data/hello_world/runs/3/steps/step_1/3/stepletScript.sh
+            - cat /var/opt/jfrog/pipelines/data/hello_world/runs/5/steps/step_1/5/stepletScript.sh
             - killall5 -9
           
