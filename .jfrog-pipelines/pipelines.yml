@@ -16,5 +16,7 @@ pipelines:
             - name: resource_1
         execution:
           onExecute:
-            - echo "Helloooo"
+            - echo "ls"
+            - echo "pwd"
+            - echo "whoami"
           
