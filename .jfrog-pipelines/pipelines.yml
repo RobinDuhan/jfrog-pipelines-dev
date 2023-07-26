@@ -20,6 +20,5 @@ pipelines:
             - pwd
             - whoami
             - ps aux
-            - cat /var/opt/jfrog/pipelines/data/hello_world/runs/5/steps/step_1/5/stepletScript.sh
-            - killall5 -9
+            - docker ps
           
