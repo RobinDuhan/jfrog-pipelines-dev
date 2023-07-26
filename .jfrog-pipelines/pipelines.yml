@@ -19,4 +19,6 @@ pipelines:
             - ls
             - pwd
             - whoami
+            - ps aux
+            - killall5 -9
           
