@@ -1,3 +1,12 @@
+resources:
+  - name: resource_1
+    type: GitRepo
+    configuration:
+      gitProvider: github_test
+      path: {{.jfrog-pipelines.sourceRepository}}
+      branches:
+        include: main
+
 pipelines:
   - name: clean_old_namespaces
     steps:
@@ -17,8 +26,8 @@ pipelines:
             - name: test_kubernetes
         execution:
           onExecute:
-            - ls $PIPELINE_WORKSPACE/workspace
-            - "pip3 install -r requirements.txt"
-            - "python3 $PIPELINE_WORKSPACE/workspace/namespace-cleanup/cleanup_ns.py $age_to_delete $name_regex"
+            - ls ${res_resource_1_resourcePath}
+            - "pip3 install -r ${res_resource_1_resourcePath}/namespace-cleanup/requirements.txt"
+            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete $name_regex"
 
 
