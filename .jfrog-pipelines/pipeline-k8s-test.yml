@@ -17,7 +17,7 @@ pipelines:
             - name: test_kubernetes
         execution:
           onExecute:
-            - "pip3 install -r requirements.txt"
-            - "python3 cleanup_ns.py $age_to_delete $name_regex"
+            - "cd namespace-cleanup && pip3 install -r requirements.txt"
+            - "python3 ../cleanup_ns.py $age_to_delete $name_regex"
 
 
