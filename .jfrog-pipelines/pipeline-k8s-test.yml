@@ -19,7 +19,7 @@ pipelines:
               description: Deletes namespaces older than age_to_delete
               allowCustom: true
             name_regex:
-              default: "a*"
+              default: "default"
               description: Deletes namespaces older matching the regex provided
               allowCustom: true
           integrations:
