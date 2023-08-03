@@ -4,6 +4,8 @@ import pytz
 import re
 from kubernetes import client, config
 
+config.verify_ssl = False
+
 def delete_old_namespaces(client, days, name_regex):
     v1 = client.CoreV1Api()
     current_time = datetime.datetime.now(pytz.UTC)
