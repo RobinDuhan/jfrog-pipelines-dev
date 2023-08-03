@@ -17,8 +17,8 @@ pipelines:
             - name: test_kubernetes
         execution:
           onExecute:
-            - ls
-            - "cd $PIPELINE_WORKSPACE/namespace-cleanup && pip3 install -r requirements.txt"
+            - ls $PIPELINE_WORKSPACE
+            - "pip3 install -r requirements.txt"
             - "python3 $PIPELINE_WORKSPACE/namespace-cleanup/cleanup_ns.py $age_to_delete $name_regex"
 
 
