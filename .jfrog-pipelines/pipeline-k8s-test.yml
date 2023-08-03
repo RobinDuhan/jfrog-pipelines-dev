@@ -13,6 +13,8 @@ pipelines:
       - name: run_python_cleanup_script
         type: Bash
         configuration:
+          inputResources:
+            - name: resource_1
           environmentVariables:
             age_to_delete:
               default: 10
@@ -27,7 +29,6 @@ pipelines:
         execution:
           onExecute:
             - ls ${res_resource_1_resourcePath}
-            - find . -type f -name "*.txt"
             - "pip3 install -r ${res_resource_1_resourcePath}/namespace-cleanup/requirements.txt"
             - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete $name_regex"
 
