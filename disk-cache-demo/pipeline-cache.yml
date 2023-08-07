@@ -1,0 +1,41 @@
+resources:
+  - name: resource_1
+    type: GitRepo
+    configuration:
+      gitProvider: github_test
+      path: {{.jfrog-pipelines.sourceRepository}}
+      branches:
+        include: main
+
+pipelines:
+  - name: disk_cache_through_npm
+    steps:
+      - name: node_project_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          integrations:
+            - name: test_kubernetes
+        execution:
+          onExecute:
+            - ls ${res_resource_1_resourcePath}
+            - cd ${res_resource_1_resourcePath} && cd node-project-1
+            - npm install -g yarn
+            - yarn install
+            - node app.js
+      - name: node_project_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          integrations:
+            - name: test_kubernetes
+        execution:
+          onExecute:
+            - ls ${res_resource_1_resourcePath}
+            - cd ${res_resource_1_resourcePath} && cd node-project-2
+            - npm install -g yarn
+            - node app.js
+
+
