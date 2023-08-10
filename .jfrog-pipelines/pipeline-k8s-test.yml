@@ -31,6 +31,6 @@ pipelines:
           onExecute:
             - ls ${res_resource_1_resourcePath}
             - "pip3 install -r ${res_resource_1_resourcePath}/namespace-cleanup/requirements.txt"
-            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete")
+            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete"
 
 
