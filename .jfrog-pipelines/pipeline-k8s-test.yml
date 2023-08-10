@@ -26,10 +26,11 @@ pipelines:
               allowCustom: true
           integrations:
             - name: test_kubernetes
+            - name: jira_testing
         execution:
           onExecute:
             - ls ${res_resource_1_resourcePath}
             - "pip3 install -r ${res_resource_1_resourcePath}/namespace-cleanup/requirements.txt"
-            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete $name_regex"
+            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete"
 
 
