@@ -20,12 +20,8 @@ pipelines:
               default: 10
               description: Deletes namespaces older than age_to_delete
               allowCustom: true
-            name_regex:
-              default: "default"
-              description: Deletes namespaces older matching the regex provided
-              allowCustom: true
           integrations:
-            - name: test_kubernetes
+            - name: test_kubernetes_1
             - name: jira_testing
         execution:
           onExecute:
