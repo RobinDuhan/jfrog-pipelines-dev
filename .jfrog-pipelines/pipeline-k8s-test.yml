@@ -8,25 +8,15 @@ resources:
         include: main
 
 pipelines:
-  - name: clean_old_namespaces
+  - name: checking_rabbitmq
     steps:
-      - name: run_python_cleanup_script
+      - name: hello_world
         type: Bash
         configuration:
           inputResources:
             - name: resource_1
-          environmentVariables:
-            age_to_delete:
-              default: 10
-              description: Deletes namespaces older than age_to_delete
-              allowCustom: true
-          integrations:
-            - name: test_kubernetes_1
-            - name: jira_testing
         execution:
           onExecute:
-            - ls ${res_resource_1_resourcePath}
-            - "pip3 install -r ${res_resource_1_resourcePath}/namespace-cleanup/requirements.txt"
-            - "python3 ${res_resource_1_resourcePath}/namespace-cleanup/cleanup_ns.py $age_to_delete"
+            - echo "hello world"
 
 
