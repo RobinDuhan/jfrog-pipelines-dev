@@ -9,6 +9,8 @@ resources:
 
 pipelines:
   - name: checking_rabbitmq
+    configuration:
+      nodePool:   k8s-node-pool 
     steps:
       - name: hello_world
         type: Bash
