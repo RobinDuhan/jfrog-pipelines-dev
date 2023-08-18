@@ -9,8 +9,6 @@ resources:
 
 pipelines:
   - name: checking_rabbitmq
-    configuration:
-      nodePool: k8s-node-pool 
     steps:
       - name: hello_world
         type: Bash
@@ -20,5 +18,7 @@ pipelines:
         execution:
           onExecute:
             - echo "hello world"
+            - sleep 1000
+            - echo "Slept and woke up"
 
 
