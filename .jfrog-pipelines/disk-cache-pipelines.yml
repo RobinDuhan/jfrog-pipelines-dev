@@ -82,6 +82,8 @@ pipelines:
           onStart:
             - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
             - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
+            - sudo mkdir node_modules 
+            - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1/node_modules node_modules
             - node packageImport.js
       - name: check_import_second
         type: Bash
@@ -97,5 +99,7 @@ pipelines:
           onStart:
             - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
             - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
+            - sudo mkdir node_modules 
+            - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1/node_modules node_modules
             - node packageImport.js
 
