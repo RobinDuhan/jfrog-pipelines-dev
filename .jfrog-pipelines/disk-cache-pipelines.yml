@@ -21,7 +21,6 @@ pipelines:
           npmRegistry: "https://entplus.jfrog.io/artifactory/api/npm/npm-virtual"
           repo21: "https://entplus.jfrog.io"
           templateTarget: "pipelines-artifacts/template"
-          XRAY_ENABLED: "{{ $XRAY_SCAN_ENABLED }}"
           XRAY_FAIL_PIPELINES: "true"
           CHART_TESTING_IMAGE: releases-docker.jfrog.io/charts-ci
           CHART_TESTING_TAG: 0.1.0
