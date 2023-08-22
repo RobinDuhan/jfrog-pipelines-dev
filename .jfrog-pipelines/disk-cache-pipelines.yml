@@ -113,6 +113,9 @@ pipelines:
         execution:
           onStart:
             - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - npm config set registry ${npmRegistry}
+            - curl -u"${int_entplus_deployer_user}":"${int_entplus_deployer_apikey}" "${int_entplus_deployer_url}/api/npm/auth" >> ~/.npmrc
+            - export UPDATE_BUILD_STATUS_PACKAGES_BUILD=false
             - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
             - node packageImport.js
@@ -127,6 +130,9 @@ pipelines:
         execution:
           onStart:
             - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - npm config set registry ${npmRegistry}
+            - curl -u"${int_entplus_deployer_user}":"${int_entplus_deployer_apikey}" "${int_entplus_deployer_url}/api/npm/auth" >> ~/.npmrc
+            - export UPDATE_BUILD_STATUS_PACKAGES_BUILD=false
             - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
             - node packageImport.js
