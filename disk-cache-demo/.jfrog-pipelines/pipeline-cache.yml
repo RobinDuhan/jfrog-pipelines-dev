@@ -2,7 +2,7 @@ resources:
   - name: resource_1
     type: GitRepo
     configuration:
-      gitProvider: github_test
+      gitProvider: disk_cache_testing_private_git
       path: {{.jfrog-pipelines.sourceRepository}}
       branches:
         include: main
