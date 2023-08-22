@@ -64,6 +64,7 @@ pipelines:
             - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - sudo mkdir node_modules 
             - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1/node_modules node_modules
+            - rm -r node_modules/*
             - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
             - cd node_modules && ls
 
