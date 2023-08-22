@@ -102,4 +102,31 @@ pipelines:
             - sudo mkdir node_modules 
             - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1/node_modules node_modules
             - node packageImport.js
-
+      - name: package_build_without_disk_first
+        type: Bash
+        configuration:
+          affinityGroup: packages
+          integrations:
+            - name: entplus_deployer
+          inputResources:
+            - name: git_disk_cache_demo
+        execution:
+          onStart:
+            - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
+            - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
+            - node packageImport.js
+      - name: package_build_without_disk_second
+        type: Bash
+        configuration:
+          affinityGroup: packages
+          integrations:
+            - name: entplus_deployer
+          inputResources:
+            - name: git_disk_cache_demo
+        execution:
+          onStart:
+            - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
+            - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
+            - node packageImport.js
