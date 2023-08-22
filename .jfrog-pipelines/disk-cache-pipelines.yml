@@ -7,7 +7,7 @@ resources:
       branches:
         include: main
 pipelines:
-  - name: pipelines_build
+  - name: disk_cache_demo_pipelines
     configuration:
       retentionPolicy:
         maxAgeDays: 90
