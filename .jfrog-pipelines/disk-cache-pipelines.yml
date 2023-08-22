@@ -1,5 +1,5 @@
 resources:
-  - name: resource_1
+  - name: git_disk_cache_demo
     type: GitRepo
     configuration:
       gitProvider: disk_cache_testing_private_git
@@ -54,14 +54,14 @@ pipelines:
           integrations:
             - name: entplus_deployer
           inputResources:
-            - name: resource_1
+            - name: git_disk_cache_demo
         execution:
           onStart:
-            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
             - npm config set registry ${npmRegistry}
             - curl -u"${int_entplus_deployer_user}":"${int_entplus_deployer_apikey}" "${int_entplus_deployer_url}/api/npm/auth" >> ~/.npmrc
             - export UPDATE_BUILD_STATUS_PACKAGES_BUILD=false
-            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
             - sudo mkdir /sfx
             - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1 /sfx
@@ -75,13 +75,13 @@ pipelines:
           integrations:
             - name: entplus_deployer
           inputResources:
-            - name: resource_1
+            - name: git_disk_cache_demo
           inputSteps:
             - name: dependencies_build
         execution:
           onStart:
-            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
-            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - node packageImport.js
       - name: check_import_second
         type: Bash
@@ -90,12 +90,12 @@ pipelines:
           integrations:
             - name: entplus_deployer
           inputResources:
-            - name: resource_1
+            - name: git_disk_cache_demo
           inputSteps:
             - name: dependencies_build
         execution:
           onStart:
-            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
-            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - bash ${res_git_disk_cache_demo_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_git_disk_cache_demo_resourcePath}/disk-cache-demo
             - node packageImport.js
 
