@@ -1,0 +1,102 @@
+resources:
+  - name: resource_1
+    type: GitRepo
+    configuration:
+      gitProvider: github_test
+      path: {{.jfrog-pipelines.sourceRepository}}
+      branches:
+        include: main
+pipelines:
+  - name: pipelines_build
+    configuration:
+      retentionPolicy:
+        maxAgeDays: 90
+        minRuns: 90
+      environmentVariables:
+        readOnly:
+          buildPlaneVersion: "0.0.0-m000"
+          CHART_VERSION_OVERRIDE: ""
+          dockerVersion: "20.10.9"
+          dockerComposeVersion: "1.27.4"
+          npmRegistry: "https://entplus.jfrog.io/artifactory/api/npm/npm-virtual"
+          repo21: "https://entplus.jfrog.io"
+          templateTarget: "pipelines-artifacts/template"
+          XRAY_ENABLED: "{{ $XRAY_SCAN_ENABLED }}"
+          XRAY_FAIL_PIPELINES: "true"
+          CHART_TESTING_IMAGE: releases-docker.jfrog.io/charts-ci
+          CHART_TESTING_TAG: 0.1.0
+          HELM_VERSION: v3.8.2
+          KUBEVAL_VERSION: "0.16.1"
+          KUBECTL_VERSION: v1.23.5
+          baseMachineImageVersion: "2.4.3"
+          QUICK_MODE: "{{ ternary false true (or ( hasPrefix "master" "{{gitBranch}}" ) ( hasPrefix "release" "{{gitBranch}}" ) ( hasPrefix "milestone" "{{gitBranch}}" )) }}"
+          DEPLOY_K8S_ENVIRONMENT: "false"
+          SONAR_ENABLED: "{{ ternary false true (or ( hasPrefix "master" "{{gitBranch}}" ) ( hasPrefix "release" "{{gitBranch}}" ) ( hasPrefix "milestone" "{{gitBranch}}" )) }}"
+          PIPELINESYNC_MS_ENABLED: "{{ ternary false true (or ( hasPrefix "bugfix" "{{gitBranch}}" ) ( hasPrefix "feature" "{{gitBranch}}" ) ( hasPrefix "release" "{{gitBranch}}" ) ( hasPrefix "milestone" "{{gitBranch}}" )) }}"
+          pipeBranch: "{{gitBranch}}"  
+      jfrogCliVersion: 2
+      integrations:
+        - name: docker_jfrog_io_reader
+        - name: aws_dev_ec2
+        - name: entplus_jfrog_io_docker
+        - name: entplus_pipelines
+        - name: jfdev_agent
+        - name: slack_dev_foundation_alerts
+        - name: slack_platform_clean_pipeline
+        - name: slack_platform_release_pipeline
+        - name: jira_jfrog
+
+    steps:
+      - name: dependencies_build
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          integrations:
+            - name: entplus_deployer
+          inputResources:
+            - name: resource_1
+        execution:
+          onStart:
+            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - npm config set registry ${npmRegistry}
+            - curl -u"${int_entplus_deployer_user}":"${int_entplus_deployer_apikey}" "${int_entplus_deployer_url}/api/npm/auth" >> ~/.npmrc
+            - export UPDATE_BUILD_STATUS_PACKAGES_BUILD=false
+            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - npm config set progress false && npm ci -ddd --no-audit --no-fund --ignore-scripts
+            - sudo mkdir /sfx
+            - sudo mount -t nfs svm-06769e8048ec5f95a.fs-077c0c426c549637f.fsx.eu-central-1.amazonaws.com:/vol1 /sfx
+            - cp -r node_modules/ /sfx
+            - cd /sfx/node_modules && ls
+
+      - name: check_import_first
+        type: Bash
+        configuration:
+          affinityGroup: packages
+          integrations:
+            - name: entplus_deployer
+          inputResources:
+            - name: resource_1
+          inputSteps:
+            - name: dependencies_build
+        execution:
+          onStart:
+            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - node packageImport.js
+      - name: check_import_second
+        type: Bash
+        configuration:
+          affinityGroup: packages
+          integrations:
+            - name: entplus_deployer
+          inputResources:
+            - name: resource_1
+          inputSteps:
+            - name: dependencies_build
+        execution:
+          onStart:
+            - bash ${res_resource_1_resourcePath}/.jfrog-pipelines/install-npm.sh
+            - cd ${res_resource_1_resourcePath}/disk-cache-demo
+            - node packageImport.js
+
