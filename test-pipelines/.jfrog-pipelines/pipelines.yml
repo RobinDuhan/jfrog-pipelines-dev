@@ -8,16 +8,6 @@ resources:
         include: main
 pipelines:
   - name: hello_world
-    configuration:
-      nodePool: default-dynamic-nodepool
-      runtime:
-        type: image
-        image:
-          custom:
-            registry: docker_hub
-            sourceRepository: busybox
-            name: busybox
-            tag: latest
     steps:
       - name: step_1
         type: Bash
