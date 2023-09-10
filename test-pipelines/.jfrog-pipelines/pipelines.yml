@@ -21,6 +21,7 @@ pipelines:
             - ls
             - pwd
             - whoami
+            - sleep 300
             - ps aux
             - docker ps
           
