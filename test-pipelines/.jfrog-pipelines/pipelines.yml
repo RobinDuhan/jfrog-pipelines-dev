@@ -8,8 +8,6 @@ resources:
         include: main
 pipelines:
   - name: hello_world
-    configuration:
-      nodePool: kubernetes_testing
     steps:
       - name: step_1
         type: Bash
@@ -21,6 +19,7 @@ pipelines:
             - ls
             - pwd
             - whoami
+            - df -H
             - sleep 300
             - ps aux
             - docker ps
