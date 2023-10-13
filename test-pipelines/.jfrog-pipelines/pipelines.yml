@@ -10,7 +10,7 @@ pipelines:
   - name: hello_world
     steps:
       - name: step_1
-        type: windows
+        type: PowerShell
         configuration:
           inputResources:
             - name: resource_1
