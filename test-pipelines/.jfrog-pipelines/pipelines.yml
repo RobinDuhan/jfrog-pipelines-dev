@@ -10,17 +10,12 @@ pipelines:
   - name: hello_world
     steps:
       - name: step_1
-        type: Bash
+        type: windows
         configuration:
           inputResources:
             - name: resource_1
         execution:
           onExecute:
-            - ls
-            - pwd
-            - whoami
-            - df -H
-            - sleep 300
-            - ps aux
-            - docker ps
+            - dir
+            
           
