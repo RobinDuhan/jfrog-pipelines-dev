@@ -17,5 +17,7 @@ pipelines:
         execution:
           onExecute:
             - dir
+            - Get-WmiObject -Class Win32_LogicalDisk | Select-Object DeviceID, Size, FreeSpace
+            - docker images
             
           
