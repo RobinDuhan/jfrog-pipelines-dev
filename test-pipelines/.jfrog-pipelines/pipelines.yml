@@ -62,8 +62,8 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
-            - echo "jfrog --version"
-            - echo "jf --version"
+            - jfrog --version
+            - jf --version
           onFailure:
-            - echo "jf --version"
+            - jf --version
           
