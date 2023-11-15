@@ -9,7 +9,7 @@ resources:
 pipelines:
   - name: hello_world
     steps:
-      - name: step_1
+      - name: x86_check
         type: Bash
         configuration:
           runtime:
@@ -23,7 +23,7 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
-      - name: step_2
+      - name: arm_check
         type: Bash
         configuration:
           runtime:
@@ -37,7 +37,7 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
-      - name: step_3
+      - name: runtime_image_check
         type: Bash
         configuration:
           runtime:
@@ -52,4 +52,18 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+      - name: host_check
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
+            - echo "jfrog --version"
+            - echo "jf --version"
+          onFailure:
+            - echo "jf --version"
           
