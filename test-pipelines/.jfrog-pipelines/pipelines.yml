@@ -2,7 +2,7 @@ resources:
   - name: resource_1
     type: GitRepo
     configuration:
-      gitProvider: github_test
+      gitProvider: test
       path: {{.jfrog-pipelines.sourceRepository}}
       branches:
         include: main
@@ -10,14 +10,18 @@ pipelines:
   - name: hello_world
     steps:
       - name: step_1
-        type: PowerShell
+        type: Bash
         configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                name: releases-docker.jfrog.io/jfrog/pipelines-u20node
+                tag: 16
           inputResources:
             - name: resource_1
         execution:
           onExecute:
-            - dir
-            - Get-WmiObject -Class Win32_LogicalDisk | Select-Object DeviceID, Size, FreeSpace
-            - docker images
+            - echo "it worked"
             
           
