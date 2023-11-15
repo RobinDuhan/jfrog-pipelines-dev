@@ -30,8 +30,8 @@ pipelines:
             type: image
             image:
               custom:
-                name: releases-docker.jfrog.io/artifactory/docker/jfrog/pipelines-u20armnode
-                tag: "latest"
+                name: releases-docker.jfrog.io/jfrog/pipelines-u20arm
+                tag: "2.6.3"
           inputResources:
             - name: resource_1
         execution:
