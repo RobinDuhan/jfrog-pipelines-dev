@@ -17,7 +17,7 @@ pipelines:
             image:
               custom:
                 name: releases-docker.jfrog.io/jfrog/pipelines-u20node
-                tag: 16
+                tag: "16"
           inputResources:
             - name: resource_1
         execution:
