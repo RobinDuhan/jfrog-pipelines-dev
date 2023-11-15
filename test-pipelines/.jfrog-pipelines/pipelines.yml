@@ -30,7 +30,7 @@ pipelines:
             type: image
             image:
               custom:
-                name: https://releases-docker.jfrog.io/artifactory/docker/jfrog/pipelines-u20armnode
+                name: releases-docker.jfrog.io/artifactory/docker/jfrog/pipelines-u20armnode
                 tag: "16.20.2-f13726"
           inputResources:
             - name: resource_1
