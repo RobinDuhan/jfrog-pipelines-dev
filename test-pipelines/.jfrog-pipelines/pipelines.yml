@@ -23,5 +23,19 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+      - name: step_2
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                name: https://releases-docker.jfrog.io/artifactory/docker/jfrog/pipelines-u20armnode
+                tag: "16.20.2-f13726"
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
             
           
