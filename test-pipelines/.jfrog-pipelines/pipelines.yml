@@ -44,6 +44,7 @@ pipelines:
             type: image
             image:
               custom:
+                registry: art_ent
                 name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-full
                 tag: "0.0.0-f893"
           inputResources:
