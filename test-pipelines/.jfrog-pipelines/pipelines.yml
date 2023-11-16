@@ -59,6 +59,8 @@ pipelines:
             type: host
           inputResources:
             - name: resource_1
+          integrations:
+            - name: art_ent
         execution:
           onExecute:
             - echo "it worked"
