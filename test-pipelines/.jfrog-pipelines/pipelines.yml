@@ -39,6 +39,7 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+            - echo "$(dpkg --print-architecture)"
       - name: runtime_image_check
         type: Bash
         configuration:
