@@ -47,7 +47,6 @@ pipelines:
             type: image
             image:
               custom:
-                registry: art_ent
                 name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-full
                 tag: "0.0.0-f8937"
           inputResources:
