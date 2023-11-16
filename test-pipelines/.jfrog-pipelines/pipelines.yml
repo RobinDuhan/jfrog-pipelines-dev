@@ -8,6 +8,8 @@ resources:
         include: main
 pipelines:
   - name: hello_world
+    configuration:
+      jfrogCliVersion: 2
     steps:
       - name: x86_check
         type: Bash
