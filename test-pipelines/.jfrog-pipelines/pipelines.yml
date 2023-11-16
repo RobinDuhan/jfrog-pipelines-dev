@@ -63,6 +63,8 @@ pipelines:
           onExecute:
             - echo "it worked"
             - which jfrog
+            - whoami
+            - pwd
             - /bin/jfrog --version
             - jfrog --version
             - jf --version
