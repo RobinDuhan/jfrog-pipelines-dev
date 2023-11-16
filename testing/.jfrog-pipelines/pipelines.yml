@@ -1,0 +1,75 @@
+resources:
+  - name: resource_1
+    type: GitRepo
+    configuration:
+      gitProvider: disk_cache_testing_private_git
+      path: {{.jfrog-pipelines.sourceRepository}}
+      branches:
+        include: main
+pipelines:
+  - name: hello_world
+    steps:
+      - name: x86_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                name: releases-docker.jfrog.io/jfrog/pipelines-u20node
+                tag: "16"
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
+      - name: arm_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                name: releases-docker.jfrog.io/jfrog/pipelines-u20arm
+                tag: "2.6.3"
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
+      - name: runtime_image_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-full
+                tag: "0.0.0-f893"
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
+      - name: host_check
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: resource_1
+          integrations:
+            - name: entplus_deployer
+        execution:
+          onExecute:
+            - echo "it worked"
+            - which jfrog
+            - whoami
+            - pwd
+            - /bin/jfrog --version
+            - jfrog --version
+            - jf --version
+          onFailure:
+            - jf --version
+          
