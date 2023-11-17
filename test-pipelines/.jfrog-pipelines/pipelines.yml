@@ -28,7 +28,7 @@ pipelines:
             - aws --version
             - gcloud --version
             - git version
-            - node18 version
+            - node18 -v
             - node18 -e 'console.log("version", process.version);'
             - jq --version
             - kubectl version --client=true
@@ -69,7 +69,7 @@ pipelines:
             - aws --version
             - gcloud --version
             - git version
-            - node18 version
+            - node18 -v
             - node18 -e 'console.log("version", process.version);'
             - jq --version
             - kubectl version --client=true
@@ -98,7 +98,7 @@ pipelines:
             - aws --version
             - gcloud --version
             - git version
-            - node18 version
+            - node18 -v
             - node18 -e 'console.log("version", process.version);'
             - jq --version
             - kubectl version --client=true
