@@ -25,6 +25,17 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+            - aws --version
+            - gcloud --version
+            - git version
+            - node18 version
+            - node18 -e 'console.log("version", process.version);'
+            - jq --version
+            - kubectl version --client=true
+            - helm version --client=true
+            - helm3 version
+            - python3 --version
+            - terraform --version
       - name: arm_check
         type: Bash
         configuration:
@@ -55,6 +66,17 @@ pipelines:
           onExecute:
             - echo "it worked"
             - echo "$(dpkg --print-architecture)"
+            - aws --version
+            - gcloud --version
+            - git version
+            - node18 version
+            - node18 -e 'console.log("version", process.version);'
+            - jq --version
+            - kubectl version --client=true
+            - helm version --client=true
+            - helm3 version
+            - python3 --version
+            - terraform --version
       - name: host_check
         type: Bash
         configuration:
@@ -73,6 +95,17 @@ pipelines:
             - /bin/jfrog --version
             - jfrog --version
             - jf --version
+            - aws --version
+            - gcloud --version
+            - git version
+            - node18 version
+            - node18 -e 'console.log("version", process.version);'
+            - jq --version
+            - kubectl version --client=true
+            - helm version --client=true
+            - helm3 version
+            - python3 --version
+            - terraform --version
           onFailure:
             - jf --version
           
