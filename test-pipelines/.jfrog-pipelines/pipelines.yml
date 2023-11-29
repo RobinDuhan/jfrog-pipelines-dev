@@ -2,7 +2,7 @@ resources:
   - name: resource_1
     type: GitRepo
     configuration:
-      gitProvider: test
+      gitProvider: github_test
       path: {{.jfrog-pipelines.sourceRepository}}
       branches:
         include: main
@@ -11,55 +11,9 @@ pipelines:
     configuration:
       jfrogCliVersion: 2
     steps:
-      - name: x86_check
-        type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-u20node
-                tag: "16"
-          inputResources:
-            - name: resource_1
-        execution:
-          onExecute:
-            - echo "it worked"
-            - aws --version
-            - gcloud --version
-            - git version
-            - node18 -v
-            - node18 -e 'console.log("version", process.version);'
-            - jq --version
-            - kubectl version --client=true
-            - helm version --client=true
-            - helm3 version
-            - python3 --version
-            - terraform --version
-      - name: arm_check
-        type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-u20arm
-                tag: "2.6.3"
-          inputResources:
-            - name: resource_1
-        execution:
-          onExecute:
-            - echo "it worked"
-            - echo "$(dpkg --print-architecture)"
       - name: runtime_image_check
         type: Bash
         configuration:
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-full
-                tag: "0.0.0-f8937"
           inputResources:
             - name: resource_1
         execution:
@@ -76,7 +30,9 @@ pipelines:
             - helm version --client=true
             - helm3 version
             - python3 --version
-            - terraform --version
+            - go version
+            - java -version
+            - cpp --version
       - name: host_check
         type: Bash
         configuration:
@@ -84,8 +40,6 @@ pipelines:
             type: host
           inputResources:
             - name: resource_1
-          integrations:
-            - name: art_ent
         execution:
           onExecute:
             - echo "it worked"
@@ -105,7 +59,6 @@ pipelines:
             - helm version --client=true
             - helm3 version
             - python3 --version
-            - terraform --version
           onFailure:
             - jf --version
           
