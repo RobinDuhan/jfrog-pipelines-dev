@@ -23,7 +23,6 @@ pipelines:
             - aws --version
             - gcloud --version
             - git version
-            - node -v
             - jq --version
             - kubectl version --client=true
             - helm version --client=true
