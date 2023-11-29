@@ -27,6 +27,7 @@ pipelines:
             - kubectl version --client=true
             - helm version --client=true
             - python3 --version
+            - echo "$PATH"
             - sleep 10000
             - npm install -g gulp
             - go version
