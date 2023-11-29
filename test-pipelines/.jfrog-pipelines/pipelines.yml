@@ -59,10 +59,14 @@ pipelines:
             - helm version --client=true
             - python3 --version
             - echo "$PATH"
-            - npm install -g gulp
+            - node -v
             - go version
             - java -version
             - cpp --version
+            - packer version
+            - kubectl version --client=true
+            - helm version
+            - helm2 version
       - name: host_check
         type: Bash
         configuration:
