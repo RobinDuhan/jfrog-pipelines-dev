@@ -42,6 +42,7 @@ pipelines:
               custom:
                 name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-full
                 tag: "0.0.0-f8938_3"
+                registry: art_ent
           inputResources:
             - name: resource_1
           integrations: 
