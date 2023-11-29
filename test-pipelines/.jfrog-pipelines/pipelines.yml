@@ -23,8 +23,7 @@ pipelines:
             - aws --version
             - gcloud --version
             - git version
-            - node18 -v
-            - node18 -e 'console.log("version", process.version);'
+            - node -v
             - jq --version
             - kubectl version --client=true
             - helm version --client=true
