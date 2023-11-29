@@ -33,6 +33,35 @@ pipelines:
             - go version
             - java -version
             - cpp --version
+      - name: runtime_image_check_v2
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-full
+                tag: "0.0.0-f8938_3"
+          inputResources:
+            - name: resource_1
+          integrations: 
+            - name: art_ent
+        execution:
+          onExecute:
+            - echo "it worked"
+            - echo "$(dpkg --print-architecture)"
+            - aws --version
+            - gcloud --version
+            - git version
+            - jq --version
+            - kubectl version --client=true
+            - helm version --client=true
+            - python3 --version
+            - echo "$PATH"
+            - npm install -g gulp
+            - go version
+            - java -version
+            - cpp --version
       - name: host_check
         type: Bash
         configuration:
