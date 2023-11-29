@@ -26,7 +26,6 @@ pipelines:
             - jq --version
             - kubectl version --client=true
             - helm version --client=true
-            - helm3 version
             - python3 --version
             - go version
             - java -version
