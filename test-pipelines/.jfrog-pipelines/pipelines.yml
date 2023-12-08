@@ -22,6 +22,7 @@ pipelines:
             - echo "step_triggered_by_identity_name is $step_triggered_by_identity_name"
             - echo "step_triggered_by_resource_name is $step_triggered_by_resource_name"
             - echo "step_triggered_by_step_name is $step_triggered_by_step_name"
+            - echo "Step name is $step_name"
             - |
               if [[ $step_triggered_by_identity_name == "" ]]; then
                 echo "It is empty, yes";
