@@ -11,6 +11,30 @@ pipelines:
     configuration:
       jfrogCliVersion: 2
     steps:
+      - name: trigger_all
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+        execution:
+          onExecute:
+            - echo "it worked"
+            - echo "step_triggered_by_identity_name is $step_triggered_by_identity_name"
+            - echo "step_triggered_by_resource_name is $step_triggered_by_resource_name"
+            - echo "step_triggered_by_step_name is $step_triggered_by_step_name"
+      - name: trigger_second
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          inputSteps:
+            - name: trigger_all
+        execution:
+          onExecute:
+            - echo "it worked"
+            - echo "step_triggered_by_identity_name is $step_triggered_by_identity_name"
+            - echo "step_triggered_by_resource_name is $step_triggered_by_resource_name"
+            - echo "step_triggered_by_step_name is $step_triggered_by_step_name"
       - name: runtime_image_check
         type: Bash
         configuration:
