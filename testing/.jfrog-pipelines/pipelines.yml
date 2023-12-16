@@ -63,6 +63,7 @@ pipelines:
             - name: entplus_deployer
         execution:
           onExecute:
+            - aws sts get-caller-identity
             - echo "it worked"
             - which jfrog
             - whoami
