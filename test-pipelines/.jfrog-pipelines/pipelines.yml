@@ -16,9 +16,12 @@ pipelines:
         configuration:
           inputResources:
             - name: resource_1
+          integrations:
+            - name: pem_testing
         execution:
           onExecute:
             - echo "it worked"
+            - ls
             - aws sts get-caller-identity
             - echo "step_triggered_by_identity_name is $step_triggered_by_identity_name"
             - echo "step_triggered_by_resource_name is $step_triggered_by_resource_name"
