@@ -70,6 +70,8 @@ pipelines:
       - name: node_runtime_image_check
         type: Bash
         configuration:
+          inputResources:
+            - name: resource_1
           runtime:
             type: image
             image:
@@ -83,6 +85,8 @@ pipelines:
       - name: go_runtime_image_check
         type: Bash
         configuration:
+          inputResources:
+            - name: resource_1
           runtime:
             type: image
             image:
@@ -96,6 +100,8 @@ pipelines:
       - name: cpp_runtime_image_check
         type: Bash
         configuration:
+          inputResources:
+            - name: resource_1
           runtime:
             type: image
             image:
@@ -109,6 +115,8 @@ pipelines:
       - name: java_runtime_image_check
         type: Bash
         configuration:
+          inputResources:
+            - name: resource_1
           runtime:
             type: image
             image:
