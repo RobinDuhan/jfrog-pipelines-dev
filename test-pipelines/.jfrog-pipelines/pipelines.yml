@@ -93,7 +93,7 @@ pipelines:
               custom:
                 registry: entplus_deployer
                 name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-go
-                tag: "18"
+                tag: "1.21"
         execution:
           onExecute:
             - go version
