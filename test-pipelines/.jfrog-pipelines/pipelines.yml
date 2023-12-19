@@ -16,8 +16,6 @@ pipelines:
         configuration:
           inputResources:
             - name: resource_1
-          integrations:
-            - name: pem_testing
         execution:
           onExecute:
             - echo "it worked"
