@@ -96,8 +96,8 @@ pipelines:
             - packer version
             - kubectl version --client=true
             - helm version
-            - helm2 version
             - dotnet --version
+            - helm2 version
       - name: node_runtime_image_check
         type: Bash
         configuration:
