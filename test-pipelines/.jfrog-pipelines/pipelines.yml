@@ -127,7 +127,22 @@ pipelines:
         execution:
           onExecute:
             - java --version
-      - name: node_runtime_image_check
+      - name: dotnet_runtime_image_check
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-dotnet
+                tag: "6.0"
+        execution:
+          onExecute:
+            - dotnet --version
+      - name: node_runtime_image_check_u20
         type: Bash
         configuration:
           inputResources:
@@ -142,7 +157,7 @@ pipelines:
         execution:
           onExecute:
             - node -v
-      - name: go_runtime_image_check
+      - name: go_runtime_image_check_u20
         type: Bash
         configuration:
           inputResources:
@@ -157,7 +172,7 @@ pipelines:
         execution:
           onExecute:
             - go version
-      - name: cpp_runtime_image_check
+      - name: cpp_runtime_image_check_u20
         type: Bash
         configuration:
           inputResources:
@@ -172,7 +187,7 @@ pipelines:
         execution:
           onExecute:
             - cpp --version
-      - name: java_runtime_image_check
+      - name: java_runtime_image_check_u20
         type: Bash
         configuration:
           inputResources:
@@ -187,4 +202,19 @@ pipelines:
         execution:
           onExecute:
             - java --version
+      - name: dotnet_runtime_image_check_u20
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-dotnet
+                tag: "6.0"
+        execution:
+          onExecute:
+            - dotnet --version
           
