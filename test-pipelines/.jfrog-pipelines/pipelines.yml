@@ -81,7 +81,7 @@ pipelines:
                 tag: "18"
         execution:
           onExecute:
-            - echo "node -v"
+            - node -v
       - name: go_runtime_image_check
         type: Bash
         configuration:
@@ -96,7 +96,7 @@ pipelines:
                 tag: "18"
         execution:
           onExecute:
-            - echo "go version"
+            - go version
       - name: cpp_runtime_image_check
         type: Bash
         configuration:
@@ -111,7 +111,7 @@ pipelines:
                 tag: "13"
         execution:
           onExecute:
-            - echo "cpp --version"
+            - cpp --version
       - name: java_runtime_image_check
         type: Bash
         configuration:
@@ -126,5 +126,5 @@ pipelines:
                 tag: "17"
         execution:
           onExecute:
-            - echo "java --version"
+            - java --version
           
