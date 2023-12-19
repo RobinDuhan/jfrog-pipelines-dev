@@ -67,6 +67,37 @@ pipelines:
             - kubectl version --client=true
             - helm version
             - helm2 version
+      - name: base_runtime_image_check_u20
+        type: Bash
+        configuration:
+          inputResources:
+            - name: resource_1
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-base
+                tag: "0.0.0-f15072"
+        execution:
+          onExecute:
+            - echo "it worked"
+            - echo "$(dpkg --print-architecture)"
+            - aws --version
+            - gcloud --version
+            - git version
+            - jq --version
+            - kubectl version --client=true
+            - python3 --version
+            - node -v
+            - go version
+            - java --version
+            - cpp --version
+            - packer version
+            - kubectl version --client=true
+            - helm version
+            - helm2 version
+            - dotnet --version
       - name: node_runtime_image_check
         type: Bash
         configuration:
