@@ -69,4 +69,56 @@ pipelines:
             - kubectl version --client=true
             - helm version
             - helm2 version
+      - name: node_runtime_image_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-node
+                tag: "18"
+        execution:
+          onExecute:
+            - echo "node -v"
+      - name: go_runtime_image_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-go
+                tag: "18"
+        execution:
+          onExecute:
+            - echo "go version"
+      - name: cpp_runtime_image_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-cpp
+                tag: "13"
+        execution:
+          onExecute:
+            - echo "cpp --version"
+      - name: java_runtime_image_check
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              custom:
+                registry: entplus_deployer
+                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-java
+                tag: "17"
+        execution:
+          onExecute:
+            - echo "java --version"
           
