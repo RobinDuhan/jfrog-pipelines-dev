@@ -76,8 +76,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-base
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-base
                 tag: "0.0.0-f15072"
         execution:
           onExecute:
@@ -107,8 +106,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-node
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-node
                 tag: "18"
         execution:
           onExecute:
@@ -122,8 +120,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-go
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-go
                 tag: "1.21"
         execution:
           onExecute:
@@ -137,8 +134,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-cpp
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-cpp
                 tag: "13"
         execution:
           onExecute:
@@ -152,8 +148,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-java
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-java
                 tag: "17"
         execution:
           onExecute:
@@ -167,8 +162,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu22-dotnet
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-dotnet
                 tag: "6.0"
         execution:
           onExecute:
@@ -182,8 +176,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-node
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-node
                 tag: "18"
         execution:
           onExecute:
@@ -197,8 +190,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-go
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-go
                 tag: "1.21"
         execution:
           onExecute:
@@ -212,8 +204,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-cpp
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-cpp
                 tag: "13"
         execution:
           onExecute:
@@ -227,8 +218,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-java
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-java
                 tag: "17"
         execution:
           onExecute:
@@ -242,8 +232,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: entplus_deployer
-                name: jfpip.jfrog.io/jfrog/pipelines-ubuntu20arm-dotnet
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-dotnet
                 tag: "6.0"
         execution:
           onExecute:
