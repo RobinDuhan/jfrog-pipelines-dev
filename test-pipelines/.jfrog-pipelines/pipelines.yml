@@ -44,11 +44,17 @@ pipelines:
             - echo "step_triggered_by_identity_name is $step_triggered_by_identity_name"
             - echo "step_triggered_by_resource_name is $step_triggered_by_resource_name"
             - echo "step_triggered_by_step_name is $step_triggered_by_step_name"
-      - name: runtime_image_check
+      - name: base_runtime_image_check_u20arm
         type: Bash
         configuration:
           inputResources:
             - name: resource_1
+          runtime:
+            type: image
+            image:
+              custom:
+                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-base
+                tag: "2.7.4"
         execution:
           onExecute:
             - echo "it worked"
@@ -61,13 +67,14 @@ pipelines:
             - python3 --version
             - node -v
             - go version
-            - java -version
+            - java --version
             - cpp --version
             - packer version
             - kubectl version --client=true
             - helm version
+            - dotnet --version
             - helm2 version
-      - name: base_runtime_image_check_u20
+      - name: base_runtime_image_check_u22
         type: Bash
         configuration:
           inputResources:
@@ -77,7 +84,7 @@ pipelines:
             image:
               custom:
                 name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-base
-                tag: "0.0.0-f15072"
+                tag: "2.7.4"
         execution:
           onExecute:
             - echo "it worked"
