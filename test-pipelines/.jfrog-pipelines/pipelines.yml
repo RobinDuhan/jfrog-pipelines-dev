@@ -49,12 +49,6 @@ pipelines:
         configuration:
           inputResources:
             - name: resource_1
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu20arm-base
-                tag: "2.7.4"
         execution:
           onExecute:
             - echo "it worked"
@@ -79,12 +73,6 @@ pipelines:
         configuration:
           inputResources:
             - name: resource_1
-          runtime:
-            type: image
-            image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-base
-                tag: "2.7.4"
         execution:
           onExecute:
             - echo "it worked"
@@ -112,9 +100,10 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-node
-                tag: "18"
+              auto:
+                language: node
+                versions:
+                  - "18"
         execution:
           onExecute:
             - node -v
@@ -126,9 +115,10 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-go
-                tag: "1.21"
+              auto:
+                language: go
+                versions:
+                  - "1.21"
         execution:
           onExecute:
             - go version
@@ -140,9 +130,10 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-cpp
-                tag: "13"
+              auto:
+                language: cpp
+                versions:
+                  - "13"
         execution:
           onExecute:
             - cpp --version
@@ -154,9 +145,10 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-java
-                tag: "17"
+              auto:
+                language: java
+                versions:
+                  - "17"
         execution:
           onExecute:
             - java --version
@@ -168,9 +160,10 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: releases-docker.jfrog.io/jfrog/pipelines-ubuntu22-dotnet
-                tag: "6.0"
+              auto:
+                language: dotnet
+                versions:
+                  - "6.0"
         execution:
           onExecute:
             - dotnet --version
