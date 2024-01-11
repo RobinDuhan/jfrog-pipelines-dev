@@ -12,7 +12,7 @@ pipelines:
       jfrogCliVersion: 2
     steps:
       - name: trigger_all
-        type: Powershell
+        type: PowerShell
         configuration:
           inputResources:
             - name: resource_1
