@@ -94,6 +94,7 @@ pipelines:
                 tag: "18-2649507"
         execution:
           onExecute:
+            - echo $PATH
             - node -v
       - name: go_runtime_image_check
         type: Bash
