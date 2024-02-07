@@ -91,7 +91,7 @@ pipelines:
               custom:
                 registry: entplus
                 name: jfpip.jfrog.io/jfrog/pipelines-centos7-node
-                tag: "18-2649507"
+                tag: "18-2650747"
         execution:
           onExecute:
             - echo $PATH
