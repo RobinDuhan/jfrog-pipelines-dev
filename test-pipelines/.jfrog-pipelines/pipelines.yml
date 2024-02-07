@@ -88,10 +88,10 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: node
-                versions:
-                  - "18"
+              custom:
+                registry: entplus
+                name: jfpip.jfrog.io/jfrog/pipelines-centos7-node
+                tag: "18-2649507"
         execution:
           onExecute:
             - node -v
@@ -103,10 +103,10 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: go
-                versions:
-                  - "1.21"
+              custom:
+                registry: entplus
+                name: jfpip.jfrog.io/jfrog/pipelines-centos7-go
+                tag: "1.21-2648602"
         execution:
           onExecute:
             - go version
@@ -118,10 +118,10 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: cpp
-                versions:
-                  - "13"
+              custom:
+                registry: entplus
+                name: jfpip.jfrog.io/jfrog/pipelines-centos7-cpp
+                tag: "13-2649412"
         execution:
           onExecute:
             - cpp --version
@@ -133,10 +133,10 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: java
-                versions:
-                  - "17"
+              custom:
+                registry: entplus
+                name: jfpip.jfrog.io/jfrog/pipelines-centos7-java
+                tag: "17-2648602"
         execution:
           onExecute:
             - java --version
@@ -148,10 +148,10 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: dotnet
-                versions:
-                  - "6.0"
+              custom:
+                registry: entplus
+                name: jfpip.jfrog.io/jfrog/pipelines-centos7-dotnet
+                tag: "6.0-2648602"
         execution:
           onExecute:
             - dotnet --version
