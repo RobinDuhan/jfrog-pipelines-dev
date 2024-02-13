@@ -17,12 +17,10 @@ pipelines:
                   - 16
         execution:
           onExecute:
-            - |
-              cd $res_robind_git_resource_resourcePath/
-              npm cache verify
-              npm ci --ignore-scripts --verbose
-              npm cache verify
-              npm run lint
-              npm run build
-              npm run test:ci
-              npm cache verify
+            - cd $res_robind_git_resource_resourcePath/
+            - pwd
+            - cd disk-cache-demo/node-project-1
+            - npm cache verify
+            - npm ci
+            - ls
+            - pwd
