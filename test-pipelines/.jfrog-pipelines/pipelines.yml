@@ -20,9 +20,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: node
+                language: cpp
                 versions:
-                  - 16
+                  - 10
         execution:
           onExecute:
             - echo "it worked"
@@ -37,9 +37,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: go
+                language: java
                 versions:
-                  - 1.19
+                  - 8
         execution:
           onExecute:
             - echo "it worked"
