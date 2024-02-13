@@ -26,6 +26,7 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+            - sleep 100000
       - name: trigger_go
         type: Bash
         configuration:
@@ -43,6 +44,7 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+            - sleep 100000
       # - name: trigger_second
       #   type: Bash
       #   configuration:
