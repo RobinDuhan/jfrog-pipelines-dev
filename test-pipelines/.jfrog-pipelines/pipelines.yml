@@ -1,5 +1,5 @@
 resources:
-  - name: resource_1
+  - name: robind_git_resource
     type: GitRepo
     configuration:
       gitProvider: robind
@@ -15,7 +15,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: resource_1
+            - name: robind_git_resource
           runtime:
             type: image
             image:
@@ -30,7 +30,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: resource_1
+            - name: robind_git_resource
           inputSteps:
             - name: trigger_node
           runtime:
@@ -47,7 +47,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     inputSteps:
       #       - name: trigger_all
       #   execution:
@@ -60,7 +60,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #   execution:
       #     onExecute:
       #       - echo "it worked"
@@ -84,7 +84,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #   execution:
       #     onExecute:
       #       - echo "it worked"
@@ -108,7 +108,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -124,7 +124,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -139,7 +139,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -154,7 +154,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -169,7 +169,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -184,7 +184,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -198,7 +198,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -212,7 +212,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -226,7 +226,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
@@ -240,7 +240,7 @@ pipelines:
       #   type: Bash
       #   configuration:
       #     inputResources:
-      #       - name: resource_1
+      #       - name: robind_git_resource
       #     runtime:
       #       type: image
       #       image:
