@@ -20,7 +20,9 @@ pipelines:
             - cd $res_robind_git_resource_resourcePath/
             - pwd
             - cd disk-cache-demo/node-project-1
+            - pwd
+            - ls
             - npm cache verify
-            - npm ci
+            - npm i
             - ls
             - pwd
