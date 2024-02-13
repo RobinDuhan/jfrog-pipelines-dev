@@ -1,0 +1,28 @@
+pipelines:
+  - name: node_cache_entplus
+    configuration:
+      jfrogCliVersion: 2
+    steps:
+      - name: trigger_node
+        type: Bash
+        configuration:
+          inputResources:
+            - name: robind_git_resource
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 16
+        execution:
+          onExecute:
+            - |
+              cd $res_robind_git_resource_resourcePath/
+              npm cache verify
+              npm ci --ignore-scripts --verbose
+              npm cache verify
+              npm run lint
+              npm run build
+              npm run test:ci
+              npm cache verify
