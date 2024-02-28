@@ -52,10 +52,9 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: java
-                versions:
-                  - 1.13.7
+              custom:
+                name: releases-docker.jfrog.io/jfrog/pipelines-u18go
+                tag: "1.13.7"
           inputResources:
             - name: robind_git_resource
               trigger: false
