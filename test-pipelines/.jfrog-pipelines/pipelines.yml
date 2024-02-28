@@ -38,9 +38,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: java
+                language: go
                 versions:
-                  - 8
+                  - 1.13.7
         execution:
           onExecute:
             - echo "it worked"
