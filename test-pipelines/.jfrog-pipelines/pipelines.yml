@@ -43,6 +43,31 @@ pipelines:
         execution:
           onExecute:
             - echo "it worked"
+      - name: router_itest
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          timeoutSeconds: 3600
+          multiNode: true
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go
+                versions:
+                  - 1.13.7
+          inputResources:
+            - name: robind_git_resource
+              trigger: false
+        stepletMultipliers:
+          environmentVariables:
+            - TENANT_TEST_MODE: SingleTenant
+            - TENANT_TEST_MODE: MultiTenant
+        execution:
+          onStart:
+            - echo "Step has started"
+          onExecute:
+            - echo "step is done executing"
       # - name: trigger_second
       #   type: Bash
       #   configuration:
