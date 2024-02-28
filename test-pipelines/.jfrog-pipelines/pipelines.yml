@@ -53,7 +53,7 @@ pipelines:
             type: image
             image:
               auto:
-                language: go
+                language: java
                 versions:
                   - 1.13.7
           inputResources:
