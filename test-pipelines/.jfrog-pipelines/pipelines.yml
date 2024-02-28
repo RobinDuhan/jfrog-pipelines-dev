@@ -39,7 +39,7 @@ pipelines:
               auto:
                 language: go
                 versions:
-                  - 1.19
+                  - 1.13.7
         execution:
           onExecute:
             - echo "it worked"
